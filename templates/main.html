@@ -1,0 +1,203 @@
+{% extends 'components/base.html' %}
+{#{% block main %}#}
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#    <title>Questionnaire</title>#}
+{#</head>#}
+{#<body>#}
+{#    <h1>Questionnaire</h1>#}
+{#    <form method="post">#}
+{#        {% csrf_token %}#}
+{##}
+{#        <label for="age_years">Patient's Age (years):</label>#}
+{#        <input type="number" id="age_years" name="age_years" required><br>#}
+{##}
+{#        <label for="age_months">Patient's Age (months):</label>#}
+{#        <input type="number" id="age_months" name="age_months" required><br>#}
+{##}
+{#        <label for="age_category">Age category:</label>#}
+{#        <select id="age_category" name="age_category" required>#}
+{#            <option value="Infants">Infants (1 month to 1 year)</option>#}
+{#            <option value="Children">Children (1 year through 12 years)</option>#}
+{#            <option value="Adolescents">Adolescents (13 years through 17 years)</option>#}
+{#            <option value="Adults">Adults (18 - 65 years)</option>#}
+{#            <option value="Elderly">Elderly (> 65 years)</option>#}
+{#        </select><br>#}
+{##}
+{#        <label for="gender">Patient's Gender:</label>#}
+{#        <select id="gender" name="gender" required>#}
+{#            <option value="Male">Male</option>#}
+{#            <option value="Female">Female</option>#}
+{#            <option value="Pregnant">Pregnant</option>#}
+{#            <option value="Unknown">Unknown</option>#}
+{#        </select><br>#}
+{##}
+{#        <label for="weight_kg">Patient's Weight (kg):</label>#}
+{#        <input type="number" step="0.01" id="weight_kg" name="weight_kg" required><br>#}
+{##}
+{#        <label for="weight_lb">Patient's Weight (lb):</label>#}
+{#        <input type="number" step="0.01" id="weight_lb" name="weight_lb"><br>#}
+{##}
+{#        <label for="substance_involved">Substance involved:</label>#}
+{#        <input type="text" id="substance_involved" name="substance_involved" required><br>#}
+{##}
+{#        <!-- More form fields for the rest of the model fields -->#}
+{##}
+{#        <input type="submit" value="Submit">#}
+{#    </form>#}
+{##}
+{##}
+{#{% endblock main %}#}
+
+
+
+
+
+
+
+
+{% block main %}
+    <div class="container container-fluid">
+        <i class="fa-solid fa-user"></i>
+        <i class="fa-solid fa-comment"></i>
+        <main class="form-signin">
+            <div class="py-5 text-center">
+                <h2>Questions</h2>
+                <p class="lead">заполните поля и нажмите создать</p>
+            </div>
+            <div class="row g-5 justify-content-center">
+                <div class="col-md-7 col-lg-8">
+                    <form action="{% url 'django_app:main' %}"
+                          method="POST"
+                          enctype="multipart/form-data"
+                    >
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label for="age_years" class="form-label">Age (years):</label>
+                                <input type="text" class="form-control" id="age_years" placeholder="" value=""
+                                       required="" name="age_years">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="age_months" class="form-label">Age (months):</label>
+                                <input type="text" class="form-control" id="age_months" placeholder="" value=""
+                                       required="" name="age_months">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="age_category">Age category:</label>
+                                <br>
+                                <select class="p-2 rounded-3" id="age_category" name="age_category" required>
+                                    <option value="Infants">Infants (1 month to 1 year)</option>
+                                    <option value="Children">Children (1 year through 12 years)</option>
+                                    <option value="Adolescents">Adolescents (13 years through 17 years)</option>
+                                    <option value="Adults">Adults (18 - 65 years)</option>
+                                    <option value="Elderly">Elderly (> 65 years)</option>
+                                </select>
+                                <br>
+                            </div>
+
+                             <div class="col-sm-6">
+                            <label for="gender">Patient's Gender:</label>
+                                 <br>
+                                    <select class="p-2 rounded-3" id="gender" name="gender" required>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Pregnant">Pregnant</option>
+                                        <option value="Unknown">Unknown</option>
+                                    </select><br>
+                             </div>
+
+                            <div class="col-sm-3">
+                                <label for="weight" class="form-label">Weight (kg)</label>
+                                <input style="margin-top: -7px" type="number" class="form-control" id="weight" placeholder="" value=""
+                                       required=""
+                                       name="weight">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="email" class="form-label">email</label>
+                                <input type="email" class="form-control" id="email" placeholder="" value=""
+                                       required=""
+                                       name="email">
+                            </div>
+                            <div class="col-12">
+                                <label for="username" class="form-label">Имя пользователя</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text">#</span>
+                                    <input type="text" class="form-control" id="username"
+                                           placeholder="Имя пользователя"
+                                           required="" name="username">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="password" class="form-label">Пароль</label>
+                                <input type="password" class="form-control" id="address"
+                                       placeholder="12345Qwerty!..."
+                                       required="" name="password1">
+                            </div>
+                            <div class="col-12">
+                                <label for="address2" class="form-label">Повторите пароль</label>
+                                <input type="password" class="form-control" id="address2"
+                                       placeholder="12345Qwerty!..."
+                                       name="password2">
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label for="firstName" class="form-label">Имя</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="" value=""
+                                           required="" name="first_name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="last_name" class="form-label">Фамилия</label>
+                                    <input type="text" class="form-control" id="last_name" placeholder="" value=""
+                                           required="" name="last_name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="phone_number" class="form-label">Номер телефона</label>
+                                    <input type="text" class="form-control" id="phone_number" placeholder=""
+                                           value=""
+                                           required="" name="phone_number">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="email" class="form-label">email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="" value=""
+                                           required=""
+                                           name="email">
+                                </div>
+                                <div class="col-12">
+                                    <label for="username" class="form-label">Имя пользователя</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text">#</span>
+                                        <input type="text" class="form-control" id="username"
+                                               placeholder="Имя пользователя"
+                                               required="" name="username">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="password" class="form-label">Пароль</label>
+                                    <input type="password" class="form-control" id="address"
+                                           placeholder="12345Qwerty!..."
+                                           required="" name="password1">
+                                </div>
+                                <div class="col-12">
+                                    <label for="address2" class="form-label">Повторите пароль</label>
+                                    <input type="password" class="form-control" id="address2"
+                                           placeholder="12345Qwerty!..."
+                                           name="password2">
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                            </div>
+                            <hr class="my-4">
+                            <button class="w-100 btn btn-primary btn-lg" type="submit">создать</button>
+                    </form>
+                    <br>
+
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock main %}
